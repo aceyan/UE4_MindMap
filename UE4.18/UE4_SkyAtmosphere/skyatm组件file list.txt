@@ -1,0 +1,73 @@
+cpp:
+/Source/Editor/EditorStyle/Private/SlateEditorStyle.cpp  设置skyatm component icon
+/Source/Editor/PlacementMode/Private/PlacementModeModule.cpp  增加UActorFactorySkyAtmosphere进行拖拽创建
+/Source/Editor/UnrealEd/Classes/ActorFactories/ActorFactorySkyAtmosphere.h  定义UActorFactorySkyAtmosphere
+/Source/Editor/UnrealEd/Private/Factories/ActorFactory.cpp  实现UActorFactorySkyAtmosphere生成ASkyAtmosphere
+/Source/Runtime/Core/Public/Math/Matrix.h 
+/Source/Runtime/Core/Public/Math/Matrix.inl
+/Source/Runtime/Engine/Classes/Components/DirectionalLightComponent.h 为DirectionalLight组件增加SkyAtm相关参数
+
+/Source/Runtime/Engine/Classes/Components/ExponentialHeightFogComponent.h 为ExponentialHeightFog增加SkyAtm相关参数
+/Source/Runtime/Engine/Private/Components/HeightFogComponent.cpp
+
+/Source/Runtime/Engine/Classes/Components/LightComponent.h 增加获取skyAtm light index接口
+/Source/Runtime/Engine/Private/Components/LightComponent.cpp 生成LightSceneProxy加上skyAtm相关参数
+
+/Source/Runtime/Engine/Classes/Components/SkyAtmosphereComponent.h  
+/Source/Runtime/Engine/Private/Components/SkyAtmosphereComponent.cpp
+
+/Source/Runtime/Engine/Classes/Engine/RendererSettings.h 加入skyatm相关渲染开关bSupportSkyAtmosphere，bSupportSkyAtmosphereAffectsHeightFog
+/Source/Runtime/Engine/Private/RendererSettings.cpp
+
+/Source/Runtime/Engine/Classes/Materials/Material.h 加入bIsSky，/** Unlit and Opaque materials can be used as sky material on a sky dome mesh. When IsSky is true, these meshes will not receive any contribution from the aerial perspective. Height and Volumetric fog effects will still be applied. */
+/Source/Runtime/Engine/Private/Materials/MaterialShared.cpp
+
+加入材质表达式SkyAtmosphereLightDirection SkyAtmosphereLightIlluminance SkyAtmosphereViewLuminance
+/Source/Runtime/Engine/Classes/Materials/MaterialExpressionSkyAtmosphereLightDirection.h
+/Source/Runtime/Engine/Classes/Materials/MaterialExpressionSkyAtmosphereLightIlluminance.h
+/Source/Runtime/Engine/Classes/Materials/MaterialExpressionSkyAtmosphereViewLuminance.h
+/Source/Runtime/Engine/Private/Materials/MaterialExpressions.cpp
+
+
+/Source/Runtime/Engine/Private/Components/DirectionalLightComponent.cpp FDirectionalLightSceneProxy加入skyatm参数
+
+
+/Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.h  skyatm材质宏设置，材质表达式关联Shader入口
+
+
+
+/Source/Runtime/Engine/Private/SceneManagement.cpp
+/Source/Runtime/Engine/Private/ShaderCompiler/ShaderCompiler.cpp
+/Source/Runtime/Engine/Private/StaticMeshRender.cpp
+/Source/Runtime/Engine/Public/EngineDefines.h
+/Source/Runtime/Engine/Public/MaterialCompiler.h
+/Source/Runtime/Engine/Public/MaterialShared.h
+/Source/Runtime/Engine/Public/Rendering/SkyAtmosphereCommonData.cpp
+/Source/Runtime/Engine/Public/Rendering/SkyAtmosphereCommonData.h
+/Source/Runtime/Engine/Public/SceneInterface.h
+/Source/Runtime/Engine/Public/SceneManagement.h
+/Source/Runtime/Engine/Public/SceneView.h
+/Source/Runtime/Renderer/Private/FogRendering.cpp
+/Source/Runtime/Renderer/Private/MobileShadingRenderer.cpp
+/Source/Runtime/Renderer/Private/RendererScene.cpp
+/Source/Runtime/Renderer/Private/SceneCore.cpp
+/Source/Runtime/Renderer/Private/SceneCore.h
+/Source/Runtime/Renderer/Private/ScenePrivate.h
+/Source/Runtime/Renderer/Private/SceneRendering.cpp
+/Source/Runtime/Renderer/Private/SceneRendering.h
+/Source/Runtime/Renderer/Private/SkyAtmosphereRendering.cpp
+/Source/Runtime/Renderer/Private/SkyAtmosphereRendering.h
+/Source/Runtime/RHI/Public/RHIUtilities.h
+/Source/Runtime/ShaderCore/Private/Shader.cpp
+
+resources:
+Definitions.usf
+HeightFogCommon.ush
+MaterialTemplate.ush
+MobileBasePassVertexShader.usf
+SkyAtmosphere.usf
+SkyAtmosphereCommon.ush
+
+S_SkyAtmosphere.uasset
+SkyAtmosphere_16x.png
+SkyAtmosphere_64x.png
