@@ -21,6 +21,7 @@ cpp:
 
 /Source/Runtime/Engine/Classes/Materials/Material.h 加入bIsSky，/** Unlit and Opaque materials can be used as sky material on a sky dome mesh. When IsSky is true, these meshes will not receive any contribution from the aerial perspective. Height and Volumetric fog effects will still be applied. */
 /Source/Runtime/Engine/Private/Materials/MaterialShared.cpp
+/Source/Runtime/Engine/Public/MaterialShared.h
 
 加入材质表达式SkyAtmosphereLightDirection SkyAtmosphereLightIlluminance SkyAtmosphereViewLuminance
 /Source/Runtime/Engine/Classes/Materials/MaterialExpressionSkyAtmosphereLightDirection.h
@@ -34,30 +35,54 @@ cpp:
 
 /Source/Runtime/Engine/Private/Materials/HLSLMaterialTranslator.h  skyatm材质宏设置，材质表达式关联Shader入口
 
-
-
+定义FSkyAtmosphereSceneProxy, 给FLightSceneProxy增加skyatm相关参数
+/Source/Runtime/Engine/Public/SceneManagement.h
 /Source/Runtime/Engine/Private/SceneManagement.cpp
-/Source/Runtime/Engine/Private/ShaderCompiler/ShaderCompiler.cpp
+
+/Source/Runtime/Engine/Private/ShaderCompiler/ShaderCompiler.cpp shader编译设置skyatm相关宏
+
+
 /Source/Runtime/Engine/Private/StaticMeshRender.cpp
+
+#define NUM_ATMOSPHERE_LIGHTS 2
 /Source/Runtime/Engine/Public/EngineDefines.h
+
+加skyatm相关材质表达式接口
 /Source/Runtime/Engine/Public/MaterialCompiler.h
-/Source/Runtime/Engine/Public/MaterialShared.h
+
+相关数据
 /Source/Runtime/Engine/Public/Rendering/SkyAtmosphereCommonData.cpp
 /Source/Runtime/Engine/Public/Rendering/SkyAtmosphereCommonData.h
+
+加FScene接口AddSkyAtmosphere和RemoveSkyAtmosphere
 /Source/Runtime/Engine/Public/SceneInterface.h
-/Source/Runtime/Engine/Public/SceneManagement.h
+
+加Uniform buffer， Uniform buffer texture和sample
 /Source/Runtime/Engine/Public/SceneView.h
+
+初始化view skyatm相关参数
 /Source/Runtime/Renderer/Private/FogRendering.cpp
+
+增加draw lut
 /Source/Runtime/Renderer/Private/MobileShadingRenderer.cpp
+
+加入skyatm灯光处理
 /Source/Runtime/Renderer/Private/RendererScene.cpp
+
+
 /Source/Runtime/Renderer/Private/SceneCore.cpp
 /Source/Runtime/Renderer/Private/SceneCore.h
+
+FScene加入相关参数和接口
 /Source/Runtime/Renderer/Private/ScenePrivate.h
+
+FViewInfo初始化UniformShaderParameters
 /Source/Runtime/Renderer/Private/SceneRendering.cpp
 /Source/Runtime/Renderer/Private/SceneRendering.h
+
 /Source/Runtime/Renderer/Private/SkyAtmosphereRendering.cpp
 /Source/Runtime/Renderer/Private/SkyAtmosphereRendering.h
-/Source/Runtime/RHI/Public/RHIUtilities.h
+
 /Source/Runtime/ShaderCore/Private/Shader.cpp
 
 resources:
